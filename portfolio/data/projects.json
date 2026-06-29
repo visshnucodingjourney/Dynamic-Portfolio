@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1782718332944,
+    "title": "Automated Fetal Ultrasound Plane Classification",
+    "category": "AI",
+    "description": "Deep learning system for automated classification of fetal ultrasound anatomical planes using CNN architectures. Applied transfer learning achieving 97% accuracy",
+    "tags": "Python, CNN, VGG19, EfficientNet-B4, Transfer Learning",
+    "github_url": "",
+    "live_url": "",
+    "featured": false,
+    "created_at": "2026-06-29T07:32:12.944Z"
+  },
+  {
+    "id": 1782718385559,
+    "title": "PhishGuard – Enterprise Phishing Simulation Platform",
+    "category": "Cybersecurity",
+    "description": "Full-stack phishing awareness platform to help organizations assess employee security awareness through realistic phishing campaigns, tracking dashboards, and analytics.",
+    "tags": "Python, Flask, SQL, HTML, CSS, JavaScript, Bootstrap",
+    "github_url": "",
+    "live_url": "",
+    "featured": false,
+    "created_at": "2026-06-29T07:33:05.559Z"
+  },
+  {
+    "id": 1782719555324,
+    "title": "CrackGPT",
+    "category": "Web",
+    "description": "AI interview coach that learns from your notes. Upload your \r\nstudy material, get asked real interview questions, answer \r\nthem, and receive instant scores with missing points and \r\nideal answers — powered by Adaptive RAG and Google Gemini.",
+    "tags": "Python,Flask,LangChain,FAISS,Gemini API,Adaptive RAG,Sentence Transformers,SQLite,Bootstrap,Chart.js",
+    "github_url": "",
+    "live_url": "",
+    "featured": false,
+    "created_at": "2026-06-29T07:52:35.324Z"
+  }
+]

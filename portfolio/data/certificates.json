@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1782719757792,
+    "title": "Full Stack Web Development",
+    "issuer": "Udemy",
+    "year": "2025",
+    "created_at": "2026-06-29T07:55:57.792Z"
+  },
+  {
+    "id": 1782719792362,
+    "title": "Database Management Systems",
+    "issuer": "HackerRank",
+    "year": "2025",
+    "created_at": "2026-06-29T07:56:32.362Z"
+  },
+  {
+    "id": 1782719807004,
+    "title": "UI/UX",
+    "issuer": "Devdays",
+    "year": "2024",
+    "created_at": "2026-06-29T07:56:47.004Z"
+  }
+]

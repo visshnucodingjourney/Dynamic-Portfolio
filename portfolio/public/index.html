@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root[data-theme="dark"] {
+  --bg: #0d0d0d; --bg2: #141414; --bg3: #1a1a1a;
+  --card: #1e1e1e; --border: #2a2a2a;
+  --text: #e8e8e8; --text2: #999; --text3: #666;
+  --accent: #6c63ff; --accent2: #a78bfa;
+  --green: #10b981; --red: #ef4444;
+  --shadow: rgba(108,99,255,0.15);
+}
+:root[data-theme="light"] {
+  --bg: #f5f5f7; --bg2: #fff; --bg3: #ececec;
+  --card: #fff; --border: #e0e0e0;
+  --text: #111; --text2: #555; --text3: #888;
+  --accent: #6c63ff; --accent2: #7c3aed;
+  --green: #059669; --red: #dc2626;
+  --shadow: rgba(108,99,255,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);transition:background .3s,color .3s}
+a{color:var(--accent);text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;backdrop-filter:blur(20px);background:rgba(13,13,13,.8);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;transition:background .3s}
+[data-theme="light"] nav{background:rgba(245,245,247,.85)}
+.nav-logo{font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem;align-items:center;list-style:none}
+.nav-links a{color:var(--text2);font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-actions{display:flex;gap:.75rem;align-items:center}
+.theme-btn{background:none;border:1px solid var(--border);color:var(--text2);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:.9rem;transition:all .2s}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+.admin-link{background:var(--accent);color:#fff !important;padding:.4rem .9rem;border-radius:8px;font-size:.85rem;transition:opacity .2s}
+.admin-link:hover{opacity:.85}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(108,99,255,.12),transparent)}
+.hero-inner{position:relative;max-width:700px}
+.hero-avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);margin-bottom:1.5rem;box-shadow:0 0 30px var(--shadow)}
+.hero-avatar-placeholder{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#fff;margin:0 auto 1.5rem;box-shadow:0 0 30px var(--shadow)}
+.hero-name{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.1;margin-bottom:.75rem}
+.hero-title{font-size:1.15rem;color:var(--accent2);margin-bottom:1rem;font-weight:500}
+.hero-bio{color:var(--text2);line-height:1.7;margin-bottom:2rem;font-size:1rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{padding:.7rem 1.6rem;border-radius:10px;font-size:.95rem;cursor:pointer;font-weight:600;transition:all .2s;border:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 20px var(--shadow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--shadow)}
+.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.hero-socials{display:flex;gap:1rem;justify-content:center;margin-top:2rem}
+.hero-socials a{color:var(--text3);font-size:1.3rem;transition:color .2s}
+.hero-socials a:hover{color:var(--accent)}
+.visitor-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:.3rem .8rem;font-size:.8rem;color:var(--text2);margin-top:1.5rem}
+.visitor-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:.75rem}
+.section-sub{color:var(--text2);margin-bottom:3rem;max-width:500px}
+
+/* PROJECTS */
+#projects{background:var(--bg2)}
+.filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{padding:.4rem 1rem;border-radius:20px;border:1.5px solid var(--border);background:none;color:var(--text2);font-size:.85rem;cursor:pointer;transition:all .2s}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--shadow)}
+.project-img{width:100%;height:160px;object-fit:cover;background:linear-gradient(135deg,var(--bg3),var(--border))}
+.project-img-placeholder{width:100%;height:160px;background:linear-gradient(135deg,var(--accent)22,var(--accent2)22);display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.project-body{padding:1.25rem}
+.project-cat{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.project-title{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.project-desc{font-size:.88rem;color:var(--text2);line-height:1.6;margin-bottom:1rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.tag{background:var(--bg3);color:var(--text2);font-size:.75rem;padding:.2rem .6rem;border-radius:6px;border:1px solid var(--border)}
+.project-links{display:flex;gap:.6rem}
+.project-links a{font-size:.82rem;color:var(--text2);display:flex;align-items:center;gap:.3rem;border:1px solid var(--border);padding:.3rem .7rem;border-radius:7px;transition:all .2s}
+.project-links a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SKILLS */
+.skills-wrapper{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.skill-group{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.25rem}
+.skill-group-title{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.skill-item{margin-bottom:.9rem}
+.skill-header{display:flex;justify-content:space-between;margin-bottom:.3rem;font-size:.88rem}
+.skill-name{font-weight:600}
+.skill-pct{color:var(--text2);font-size:.8rem}
+.skill-bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;width:0;transition:width 1s ease}
+
+/* CERTIFICATES */
+#certificates{background:var(--bg2)}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.25rem}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;gap:.5rem}
+.cert-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px var(--shadow)}
+.cert-icon{font-size:2rem;margin-bottom:.25rem}
+.cert-title{font-size:1rem;font-weight:700}
+.cert-issuer{font-size:.85rem;color:var(--accent)}
+.cert-date{font-size:.8rem;color:var(--text3)}
+.cert-view{margin-top:.5rem;align-self:flex-start;font-size:.82rem;color:var(--text2);border:1px solid var(--border);padding:.3rem .7rem;border-radius:7px;transition:all .2s}
+.cert-view:hover{border-color:var(--accent);color:var(--accent)}
+
+/* CONTACT */
+.contact-wrapper{display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:start}
+@media(max-width:700px){.contact-wrapper{grid-template-columns:1fr}}
+.contact-info h3{font-size:1.2rem;font-weight:700;margin-bottom:.75rem}
+.contact-info p{color:var(--text2);line-height:1.7;margin-bottom:1.5rem;font-size:.95rem}
+.contact-detail{display:flex;align-items:center;gap:.75rem;color:var(--text2);margin-bottom:.75rem;font-size:.9rem}
+.contact-detail i{color:var(--accent);width:18px}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--text2)}
+.form-group input,.form-group textarea{width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.7rem 1rem;color:var(--text);font-size:.95rem;font-family:inherit;transition:border-color .2s;resize:vertical}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--accent)}
+.form-group textarea{min-height:130px}
+.form-msg{margin-top:1rem;font-size:.9rem;padding:.7rem 1rem;border-radius:9px;display:none}
+.form-msg.success{background:rgba(16,185,129,.1);border:1px solid var(--green);color:var(--green);display:block}
+.form-msg.error{background:rgba(239,68,68,.1);border:1px solid var(--red);color:var(--red);display:block}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);text-align:center;padding:2rem;color:var(--text3);font-size:.85rem}
+
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:3rem;color:var(--text3)}
+.empty-state i{font-size:2.5rem;margin-bottom:.75rem;display:block;color:var(--border)}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  section{padding:4rem 1.2rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <span class="nav-logo" id="nav-name">Portfolio</span>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme"><i class="fa fa-moon" id="theme-icon"></i></button>
+    <a href="/admin" class="admin-link"><i class="fa fa-lock"></i> Admin</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div id="hero-avatar"></div>
+    <h1 class="hero-name" id="hero-name">Loading…</h1>
+    <div class="hero-title" id="hero-title"></div>
+    <p class="hero-bio" id="hero-bio"></p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Get In Touch</a>
+      <a id="resume-btn" class="btn btn-outline" style="display:none"><i class="fa fa-download"></i> Download Resume</a>
+    </div>
+    <div class="hero-socials" id="hero-socials"></div>
+    <div class="visitor-badge"><span class="visitor-dot"></span> <span id="visitor-count">0</span> visitors</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Work</div>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">Things I've built — click to explore.</p>
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" onclick="filterProjects('All',this)">All</button>
+    </div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Skills</h2>
+    <p class="section-sub">Technologies and disciplines I work with.</p>
+    <div class="skills-wrapper" id="skills-wrapper"></div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-inner">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Certificates</h2>
+    <p class="section-sub">Courses, certifications, and achievements.</p>
+    <div class="certs-grid" id="certs-grid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Say Hello</div>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h3>Let's work together</h3>
+        <p>I'm open to freelance projects, full-time roles, and interesting collaborations. Drop me a message!</p>
+        <div class="contact-detail" id="contact-email"></div>
+      </div>
+      <div>
+        <div class="form-group"><label>Your Name</label><input type="text" id="c-name" placeholder="John Doe"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="c-email" placeholder="john@example.com"></div>
+        <div class="form-group"><label>Message</label><textarea id="c-msg" placeholder="Tell me about your project…"></textarea></div>
+        <button class="btn btn-primary" onclick="sendContact()"><i class="fa fa-paper-plane"></i> Send Message</button>
+        <div class="form-msg" id="form-msg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">Loading…</footer>
+
+<script>
+let allProjects = [];
+const catIcons = {Web:'🌐',AI:'🤖',Cybersecurity:'🔒',Mobile:'📱',Design:'🎨',Other:'⚡'};
+
+// Theme
+function toggleTheme(){
+  const t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('theme-icon').className = t==='dark'?'fa fa-moon':'fa fa-sun';
+  localStorage.setItem('theme', t);
+}
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+document.getElementById('theme-icon').className = savedTheme==='dark'?'fa fa-moon':'fa fa-sun';
+
+// Load settings
+async function loadSettings(){
+  const s = await fetch('/api/public/settings').then(r=>r.json());
+  document.title = (s.name || 'Portfolio') + ' | Portfolio';
+  document.getElementById('nav-name').textContent = s.name || 'Portfolio';
+  document.getElementById('hero-name').textContent = s.name || 'Your Name';
+  document.getElementById('hero-title').textContent = s.title || '';
+  document.getElementById('hero-bio').textContent = s.bio || '';
+  document.getElementById('visitor-count').textContent = (s.visitor_count||0).toLocaleString();
+
+  const avatarEl = document.getElementById('hero-avatar');
+  if (s.avatar_filename) {
+    avatarEl.innerHTML = `<img src="/uploads/${s.avatar_filename}" class="hero-avatar" alt="${s.name}">`;
+  } else {
+    const initials = (s.name||'YN').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    avatarEl.innerHTML = `<div class="hero-avatar-placeholder">${initials}</div>`;
+  }
+
+  if (s.resume_filename) {
+    const btn = document.getElementById('resume-btn');
+    btn.href = `/uploads/${s.resume_filename}`;
+    btn.download = s.resume_filename;
+    btn.style.display = 'inline-flex';
+  }
+
+  const socials = document.getElementById('hero-socials');
+  const links = [
+    {url:s.github,icon:'fa-brands fa-github'},{url:s.linkedin,icon:'fa-brands fa-linkedin'},
+    {url:s.twitter,icon:'fa-brands fa-twitter'},{url:`mailto:${s.email}`,icon:'fa fa-envelope'}
+  ];
+  socials.innerHTML = links.filter(l=>l.url).map(l=>`<a href="${l.url}" target="_blank"><i class="${l.icon}"></i></a>`).join('');
+
+  if (s.email) {
+    document.getElementById('contact-email').innerHTML = `<i class="fa fa-envelope"></i> ${s.email}`;
+  }
+  document.getElementById('footer').textContent = `© ${new Date().getFullYear()} ${s.name||'Portfolio'}. Built with ❤️`;
+}
+
+// Load projects
+async function loadProjects(){
+  allProjects = await fetch('/api/public/projects').then(r=>r.json());
+  const cats = ['All',...new Set(allProjects.map(p=>p.category).filter(Boolean))];
+  const bar = document.getElementById('filter-bar');
+  bar.innerHTML = cats.map(c=>`<button class="filter-btn ${c==='All'?'active':''}" onclick="filterProjects('${c}',this)">${c}</button>`).join('');
+  renderProjects(allProjects);
+}
+
+function filterProjects(cat, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = cat==='All' ? allProjects : allProjects.filter(p=>p.category===cat);
+  renderProjects(filtered);
+}
+
+function renderProjects(projects){
+  const g = document.getElementById('projects-grid');
+  if (!projects.length){g.innerHTML='<div class="empty-state"><i class="fa fa-folder-open"></i><p>No projects yet.</p></div>';return;}
+  g.innerHTML = projects.map(p=>`
+    <div class="project-card">
+      ${p.image_filename
+        ? `<img src="/uploads/${p.image_filename}" class="project-img" alt="${p.title}">`
+        : `<div class="project-img-placeholder">${catIcons[p.category]||'⚡'}</div>`}
+      <div class="project-body">
+        <div class="project-cat">${p.category||'Project'}</div>
+        <div class="project-title">${p.title}</div>
+        <div class="project-desc">${p.description||''}</div>
+        <div class="project-tags">${(p.tags||'').split(',').filter(Boolean).map(t=>`<span class="tag">${t.trim()}</span>`).join('')}</div>
+        <div class="project-links">
+          ${p.github_url?`<a href="${p.github_url}" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>`:''}
+          ${p.live_url?`<a href="${p.live_url}" target="_blank"><i class="fa fa-arrow-up-right-from-square"></i> Live</a>`:''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Load skills
+async function loadSkills(){
+  const skills = await fetch('/api/public/skills').then(r=>r.json());
+  const groups = {};
+  skills.forEach(s=>{
+    const g = s.category||'Other';
+    if(!groups[g]) groups[g]=[];
+    groups[g].push(s);
+  });
+  const w = document.getElementById('skills-wrapper');
+  if (!Object.keys(groups).length){w.innerHTML='<div class="empty-state"><i class="fa fa-star"></i><p>No skills yet.</p></div>';return;}
+  w.innerHTML = Object.entries(groups).map(([cat,items])=>`
+    <div class="skill-group">
+      <div class="skill-group-title">${cat}</div>
+      ${items.map(s=>`
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">${s.name}</span><span class="skill-pct">${s.level}%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-level="${s.level}"></div></div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+  // Animate bars
+  setTimeout(()=>{
+    document.querySelectorAll('.skill-fill').forEach(el=>{
+      el.style.width = el.dataset.level + '%';
+    });
+  },200);
+}
+
+// Load certificates
+async function loadCertificates(){
+  const certs = await fetch('/api/public/certificates').then(r=>r.json());
+  const g = document.getElementById('certs-grid');
+  if (!certs.length){g.innerHTML='<div class="empty-state"><i class="fa fa-certificate"></i><p>No certificates yet.</p></div>';return;}
+  g.innerHTML = certs.map(c=>`
+    <div class="cert-card">
+      <div class="cert-icon">🏆</div>
+      <div class="cert-title">${c.title}</div>
+      <div class="cert-issuer">${c.issuer||''}</div>
+      <div class="cert-date">${c.year||''}</div>
+      ${c.filename?`<a href="/uploads/${c.filename}" target="_blank" class="cert-view"><i class="fa fa-eye"></i> View</a>`:''}
+    </div>
+  `).join('');
+}
+
+// Contact form
+async function sendContact(){
+  const name=document.getElementById('c-name').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const message=document.getElementById('c-msg').value.trim();
+  const msgEl=document.getElementById('form-msg');
+  if(!name||!email||!message){msgEl.className='form-msg error';msgEl.textContent='Please fill all fields.';return;}
+  const r = await fetch('/api/public/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,message})});
+  if(r.ok){
+    msgEl.className='form-msg success';msgEl.textContent='Message sent! I\'ll get back to you soon.';
+    document.getElementById('c-name').value='';
+    document.getElementById('c-email').value='';
+    document.getElementById('c-msg').value='';
+  } else {
+    msgEl.className='form-msg error';msgEl.textContent='Failed to send. Please try again.';
+  }
+}
+
+// Intersection observer for skill bars
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.querySelectorAll('.skill-fill').forEach(el=>el.style.width=el.dataset.level+'%');
+  });
+},{threshold:0.3});
+document.addEventListener('DOMContentLoaded',()=>{
+  const sw=document.getElementById('skills-wrapper');
+  if(sw) observer.observe(sw);
+});
+
+loadSettings();
+loadProjects();
+loadSkills();
+loadCertificates();
+</script>
+</body>
+</html>

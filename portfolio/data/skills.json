@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Python",
+    "level": 80,
+    "category": "Languages",
+    "created_at": "2026-06-29T07:13:50.856Z"
+  },
+  {
+    "id": 3,
+    "name": "React",
+    "level": 82,
+    "category": "Frontend",
+    "created_at": "2026-06-29T07:13:50.856Z"
+  },
+  {
+    "id": 4,
+    "name": "Node.js",
+    "level": 85,
+    "category": "Backend",
+    "created_at": "2026-06-29T07:13:50.856Z"
+  },
+  {
+    "id": 5,
+    "name": "Machine Learning",
+    "level": 75,
+    "category": "AI/ML",
+    "created_at": "2026-06-29T07:13:50.856Z"
+  },
+  {
+    "id": 6,
+    "name": "Cybersecurity",
+    "level": 70,
+    "category": "Security",
+    "created_at": "2026-06-29T07:13:50.856Z"
+  },
+  {
+    "id": 1782718497599,
+    "name": "JavaScript",
+    "category": "Languages",
+    "level": 50,
+    "created_at": "2026-06-29T07:34:57.599Z"
+  },
+  {
+    "id": 1782719683010,
+    "name": "SQL",
+    "category": "Languages",
+    "level": 80,
+    "created_at": "2026-06-29T07:54:43.010Z"
+  },
+  {
+    "id": 1782719705119,
+    "name": "DSA",
+    "category": "Languages",
+    "level": 80,
+    "created_at": "2026-06-29T07:55:05.119Z"
+  }
+]
